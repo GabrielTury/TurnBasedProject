@@ -50,4 +50,9 @@ public class BoardCreator : MonoBehaviour
             tiles.Add(go);
         }
     }
+
+    public List<GameObject> GetTileList()
+    {
+        return tiles;
+    }
 }

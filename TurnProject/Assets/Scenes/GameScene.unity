@@ -388,6 +388,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2140590297}
   - component: {fileID: 2140590296}
+  - component: {fileID: 2140590300}
+  - component: {fileID: 2140590299}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -407,9 +409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d9eb4d02d5736428eaf29379eb099a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileList: []
   baseObject: {fileID: 6287184785050452597, guid: 37e8d1a56bd48cd40b0edbb46c9124c0,
     type: 3}
-  boardDimensions: {x: 10, y: 10}
+  boardDimensions: {x: 13, y: 8}
 --- !u!4 &2140590297
 Transform:
   m_ObjectHideFlags: 0
@@ -425,6 +428,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2140590299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140590295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce83f3571b98213428eba9b70ae6de72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTempObject: {fileID: 5733779358344140532, guid: e649d4d3d2de5f74db65b5a5abbb0618,
+    type: 3}
+--- !u!114 &2140590300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140590295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5397b754438c4241ba50b8969eb4e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
