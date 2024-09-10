@@ -11,6 +11,13 @@ public class PlayerScript : MonoBehaviour
     int currentTileIndex;
 
     BoardManager boardManagerInstance;
+
+    private List<GameObject> cards;
+
+    private void Awake()
+    {
+        cards = new List<GameObject>();
+    }
     private void OnEnable()
     {
         boardManagerInstance = BoardManager.Instance;
@@ -35,15 +42,26 @@ public class PlayerScript : MonoBehaviour
     public void OnLocalStartTurn()
     {
         GameEvents.MovePlayer += Movement;
+        GameEvents.CardBuy += BuyCard;
+        GameEvents.UseCard += UseCard;
     }
     public void OnLocalEndTurn()
     {
         GameEvents.MovePlayer -= Movement;
+        GameEvents.CardBuy -= BuyCard;
+        GameEvents.UseCard -= UseCard;
     }
-    private void Start()
+
+    public void BuyCard()
     {
-        
+
     }
+
+    public void UseCard()
+    {
+
+    }
+
     #region Movement
     void Movement(int movementAmount)
     {

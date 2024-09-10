@@ -16,4 +16,10 @@ public static class GameEvents
 
     public static event UnityAction TurnEnd;
     public static void OnTurnEnded() => TurnEnd?.Invoke();
+
+    public static event UnityAction CardBuy;
+    public static void OnCardBought() => CardBuy?.Invoke();
+
+    public static event UnityAction UseCard;
+    public static void OnCardUsed() => UseCard?.Invoke();
 }

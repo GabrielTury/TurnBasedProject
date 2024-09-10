@@ -19,5 +19,10 @@ public class ScriptableCard : ScriptableObject
     private GameEnums.Special specialType ;
 
     public GameEnums.Special GetSpecialType() => specialType;
+
+    [SerializeField, Tooltip("Image that will show in UI")]
+    private Sprite sprite;
+
+    public Sprite GetSprite() => sprite;
     
 }
