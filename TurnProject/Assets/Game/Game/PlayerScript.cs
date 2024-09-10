@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     BoardManager boardManagerInstance;
     private void OnEnable()
     {
+        boardManagerInstance = BoardManager.Instance;
         GameEvents.TurnStart += OnStartTurn;
         GameEvents.TurnEnd += OnEndTurn;
     }
@@ -41,7 +42,7 @@ public class PlayerScript : MonoBehaviour
     }
     private void Start()
     {
-        boardManagerInstance = BoardManager.Instance;
+        
     }
     #region Movement
     void Movement(int movementAmount)
@@ -49,12 +50,12 @@ public class PlayerScript : MonoBehaviour
         //Debug.Log("Called Movement in player");
 
         currentTileIndex += movementAmount;
-        //Debug.Log(boardManagerInstance);
+        Debug.Log(boardManagerInstance);
         if(currentTileIndex > boardManagerInstance.tileList.Count)
         {
             currentTileIndex -= boardManagerInstance.tileList.Count;
         }
-        MoveToTile();
+        StartCoroutine(MoveToTile());
     }
 
     private IEnumerator MoveToTile()

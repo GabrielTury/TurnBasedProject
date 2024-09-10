@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Tooltip("Count Starts From ZERO")]
     int playerAmount;
 
     int turnPlayer;
@@ -12,6 +13,16 @@ public class PlayerManager : MonoBehaviour
     public List<PlayerScript> players { get; private set; }
 
     public GameObject playerTempObject;
+
+    private void OnEnable()
+    {
+        GameEvents.TurnEnd += TurnChanger;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.TurnEnd -= TurnChanger;
+    }
 
     private void Awake()
     {
@@ -34,10 +45,18 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void TurnChanger()
     {
-        
+        if(turnPlayer + 1 > playerAmount)
+        {
+            turnPlayer = 0;
+        }
+        else
+        {
+            turnPlayer++;
+        }
+        //Change Turn Animation
+        players[turnPlayer].OnLocalStartTurn();
     }
     public void SetPlayerAmount(int i)
     {
