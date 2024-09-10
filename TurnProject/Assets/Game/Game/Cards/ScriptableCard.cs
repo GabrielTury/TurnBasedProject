@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class ScriptableCard : ScriptableObject
 {
-    [Tooltip("Number that will appear visually and determine movement amount")]
-    public int number { get; private set; }
+    [SerializeField, Tooltip("Number that will appear visually and determine movement amount")]
+    private int number;
 
-    [Tooltip("Color to determin if it can be played")]
-    public GameEnums.Colors color {  get; private set; }
+    public int GetCardNumber() => number;
 
-    [Tooltip("Whether the card is special or not")]
-    public bool isSpecial { get; private set; }
+    [SerializeField, Tooltip("Color to determin if it can be played")]
+    private GameEnums.Colors color;
 
-    [Tooltip("Special Type")]
-    public GameEnums.Special specialType { get; private set; }
+    public GameEnums.Colors GetCardColor() => color;
+
+    [SerializeField, Tooltip("Special Type")]
+    private GameEnums.Special specialType ;
+
+    public GameEnums.Special GetSpecialType() => specialType;
     
 }

@@ -53,7 +53,7 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            turnPlayer++;
+            turnPlayer++;                        
         }
         //Change Turn Animation
         players[turnPlayer].OnLocalStartTurn();
