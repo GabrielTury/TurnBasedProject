@@ -121,3 +121,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  cardPrefab: {fileID: 5802518197543103177, guid: dccb2e02642aa0449999dbd11c06ab2a,
+    type: 3}

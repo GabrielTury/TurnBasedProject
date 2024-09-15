@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameEnums.Colors color {  get; private set; }
 
-    // Update is called once per frame
-    void Update()
+    public GameEnums.TileSpecial special { get; private set; }
+
+    public void ChangeTileColor(int newColorId)
     {
-        
+        color = (GameEnums.Colors)newColorId;
     }
 }

@@ -12,6 +12,12 @@ public static class GameEnums
 
     }
 
+    public enum TileSpecial
+    {
+        None = 0,
+        Plus2 = 1
+    }
+
     public enum Colors
     {
         Blue = 1,

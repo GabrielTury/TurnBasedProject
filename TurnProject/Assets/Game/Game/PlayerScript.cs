@@ -10,6 +10,9 @@ public class PlayerScript : MonoBehaviour
 
     int currentTileIndex;
 
+    [SerializeField]
+    private GameObject cardPrefab;
+
     BoardManager boardManagerInstance;
 
     private List<GameObject> cards;
@@ -52,13 +55,20 @@ public class PlayerScript : MonoBehaviour
         GameEvents.UseCard -= UseCard;
     }
 
-    public void BuyCard()
+    public void BuyCard(ScriptableCard card)
     {
+        Transform canvasParent = FindObjectOfType<Canvas>().transform;
+        GameObject g = Instantiate(cardPrefab, canvasParent);
 
+        g.GetComponent<CardBehaviour>().CreateCardBehaviour(card);
+
+        cards.Add(g);
     }
 
-    public void UseCard()
+    public void UseCard(GameObject usedCard)
     {
+        cards.Remove(usedCard);
+        Destroy(usedCard);
 
     }
 

@@ -13,7 +13,7 @@ public class CardBehaviour : MonoBehaviour
     public GameEnums.Special special { get; private set; }
 
     private Sprite s;
-    private CardBehaviour(ScriptableCard card)
+    public void CreateCardBehaviour(ScriptableCard card)
     {
         number = card.GetCardNumber();
         color = card.GetCardColor();
@@ -26,6 +26,9 @@ public class CardBehaviour : MonoBehaviour
     }
     public void OnClicked()
     {
+        if(number != 0)
+            GameEvents.OnMovePlayer(5);
 
+        GameEvents.OnCardUsed(gameObject);
     }
 }

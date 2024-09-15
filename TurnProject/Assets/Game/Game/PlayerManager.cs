@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager instance;
+
     [Tooltip("Count Starts From ZERO")]
     int playerAmount;
 
     int turnPlayer;
+
+    [SerializeField, Tooltip("List with all available cards on the game")]
+    private List<ScriptableCard> cardList;
 
     public List<PlayerScript> players { get; private set; }
 
@@ -26,6 +31,14 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
         players = new List<PlayerScript>();
     }
     void Start()
@@ -35,7 +48,7 @@ public class PlayerManager : MonoBehaviour
         {
             players.Add(p);
             players[0].OnLocalStartTurn();
-            GameEvents.OnMovePlayer(5);
+            GameEvents.OnCardBought(cardList[0]);
             //Debug.Log("Called Move Event");
 
         }
