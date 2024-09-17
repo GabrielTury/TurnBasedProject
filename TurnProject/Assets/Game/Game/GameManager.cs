@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    int numOfPlayers;
+    int numOfPlayers = 1;
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-
-        GameEvents.StartGame += InitializeGame;
+        InitializeGame();
     }
 
     // Update is called once per frame
@@ -26,5 +25,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("No PlayerManager Found!");
         }
+
+        GameEvents.OnGameStarted();
     }
 }

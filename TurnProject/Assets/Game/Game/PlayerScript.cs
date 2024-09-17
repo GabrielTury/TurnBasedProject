@@ -47,12 +47,28 @@ public class PlayerScript : MonoBehaviour
         GameEvents.MovePlayer += Movement;
         GameEvents.CardBuy += BuyCard;
         GameEvents.UseCard += UseCard;
+
+        float offset = 0;
+        foreach(var card in cards)
+        {
+            RectTransform tr = card.GetComponent<RectTransform>();
+            tr.position = new Vector3(200, 0, 0);
+
+            card.SetActive(true);
+            tr.position += new Vector3(offset, 0, 0);
+            offset += 90;
+        }
     }
     public void OnLocalEndTurn()
     {
         GameEvents.MovePlayer -= Movement;
         GameEvents.CardBuy -= BuyCard;
         GameEvents.UseCard -= UseCard;
+
+        foreach (var card in cards)
+        {
+            card.SetActive(false);
+        }
     }
 
     public void BuyCard(ScriptableCard card)
@@ -70,6 +86,23 @@ public class PlayerScript : MonoBehaviour
         cards.Remove(usedCard);
         Destroy(usedCard);
 
+    }
+
+    public void SetInitialCards(int cardAmount, List<ScriptableCard> possibleCards)
+    {
+        Transform canvasParent = FindObjectOfType<Canvas>().transform;
+
+        for (int i = 0; i< cardAmount; i++)
+        {
+            GameObject c = Instantiate(cardPrefab, canvasParent);
+            int rand = Random.Range(0, possibleCards.Count);
+
+            c.GetComponent<CardBehaviour>().CreateCardBehaviour(possibleCards[rand]);
+
+            cards.Add(c);
+
+            c.SetActive(false);
+        }
     }
 
     #region Movement

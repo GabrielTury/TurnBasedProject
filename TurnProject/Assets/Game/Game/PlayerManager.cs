@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 
-    [Tooltip("Count Starts From ZERO")]
+    [Tooltip("Count Starts From ONE")]
     int playerAmount;
 
     int turnPlayer;
@@ -22,11 +22,13 @@ public class PlayerManager : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.TurnEnd += TurnChanger;
+        GameEvents.StartGame += InitializeGame;
     }
 
     private void OnDisable()
     {
         GameEvents.TurnEnd -= TurnChanger;
+        GameEvents.StartGame -= InitializeGame;
     }
 
     private void Awake()
@@ -41,14 +43,23 @@ public class PlayerManager : MonoBehaviour
         }
         players = new List<PlayerScript>();
     }
-    void Start()
+
+    private void InitializeGame()
     {
-        PlayerScript p = Instantiate(playerTempObject).GetComponent<PlayerScript>();
-        if(p != null)
+        for (int i = 0; i < playerAmount; i++)
         {
-            players.Add(p);
+            PlayerScript a = Instantiate(playerTempObject).GetComponent<PlayerScript>();
+            players.Add(a);
+        }
+
+        if (players.Count > 0)
+        {
+            foreach (PlayerScript py in players)
+            {
+                py.SetInitialCards(7, cardList);
+            }
+
             players[0].OnLocalStartTurn();
-            GameEvents.OnCardBought(cardList[0]);
             //Debug.Log("Called Move Event");
 
         }
@@ -60,7 +71,7 @@ public class PlayerManager : MonoBehaviour
 
     private void TurnChanger()
     {
-        if(turnPlayer + 1 > playerAmount)
+        if(turnPlayer + 1 >= playerAmount)
         {
             turnPlayer = 0;
         }
