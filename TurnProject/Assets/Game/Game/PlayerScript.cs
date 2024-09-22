@@ -69,6 +69,8 @@ public class PlayerScript : MonoBehaviour
         {
             card.SetActive(false);
         }
+
+        PlayerManager.instance.ismoving = false;
     }
 
     public void BuyCard(ScriptableCard card)

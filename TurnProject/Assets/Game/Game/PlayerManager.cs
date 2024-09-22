@@ -12,6 +12,8 @@ public class PlayerManager : MonoBehaviour
 
     int turnPlayer;
 
+    public bool ismoving;
+
     [SerializeField, Tooltip("List with all available cards on the game")]
     private List<ScriptableCard> cardList;
 

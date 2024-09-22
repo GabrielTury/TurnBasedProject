@@ -26,8 +26,13 @@ public class CardBehaviour : MonoBehaviour
     }
     public void OnClicked()
     {
+        if (PlayerManager.instance.ismoving)
+            return;
+
         if(number != 0)
             GameEvents.OnMovePlayer(5);
+
+        PlayerManager.instance.ismoving = true;
 
         GameEvents.OnCardUsed(gameObject);
     }
