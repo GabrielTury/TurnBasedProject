@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/UITest.uss?fileID=7433441132597879392&amp;guid=f6d70c3fd0c951b40aef2b1a09490521&amp;type=3#UITest" />
+    <ui:VisualElement style="flex-grow: 1; flex-direction: column;">
+        <ui:Button text="Play" parse-escape-sequences="true" display-tooltip-when-elided="true" view-data-key="PlayButton" style="top: 50%; flex-direction: column; flex-basis: auto; max-height: 150px; max-width: 450px; width: 400px; height: 100px; visibility: visible; display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; align-self: center; flex-shrink: 0; font-size: 42px; transition-property: all, ignored; transition-duration: 0s, 0s; transition-timing-function: ease, ease; transition-delay: 0s, 0s;" />
+    </ui:VisualElement>
+</ui:UXML>

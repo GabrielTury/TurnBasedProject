@@ -630,6 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce83f3571b98213428eba9b70ae6de72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ismoving: 0
   cardList:
   - {fileID: 11400000, guid: dd8c3db50a18d9b4fb7b145d7364f9cd, type: 2}
   playerTempObject: {fileID: 5733779358344140532, guid: e649d4d3d2de5f74db65b5a5abbb0618,
