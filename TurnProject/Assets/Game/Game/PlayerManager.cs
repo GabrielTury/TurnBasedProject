@@ -88,4 +88,32 @@ public class PlayerManager : MonoBehaviour
     {
         playerAmount = i;
     }
+
+    public PlayerScript GetNextPlayer()
+    {
+        int playerIndex = 0;
+        if(turnPlayer + 1 >= playerAmount)
+        {
+            playerIndex = 0;
+        }
+        else
+        {
+            playerIndex = playerAmount + 1;
+        }
+
+        return players[playerIndex];
+    }
+
+    public ScriptableCard[] GetRandomCards(int amount)
+    {
+        ScriptableCard[] returnCards = new ScriptableCard[amount];
+        for(int i = 0; i < amount; i++)
+        {
+            returnCards[i] = cardList[Random.Range(0, cardList.Count)];
+        }
+
+        return returnCards;
+    }
+
+
 }

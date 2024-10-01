@@ -17,6 +17,8 @@ public class PlayerScript : MonoBehaviour
 
     private List<GameObject> cards;
 
+    public Tile currentTile { get; private set; }
+
     private void Awake()
     {
         cards = new List<GameObject>();
@@ -105,6 +107,11 @@ public class PlayerScript : MonoBehaviour
 
             c.SetActive(false);
         }
+    }
+
+    public void SetTile(Tile tile)
+    {
+        currentTile = tile;
     }
 
     #region Movement

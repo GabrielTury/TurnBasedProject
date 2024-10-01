@@ -29,8 +29,27 @@ public class CardBehaviour : MonoBehaviour
         if (PlayerManager.instance.ismoving)
             return;
 
-        if(number != 0)
-            GameEvents.OnMovePlayer(5);
+
+        if(special == 0)
+            GameEvents.OnMovePlayer(number);
+        else
+        {
+            switch(special)
+            {
+                case GameEnums.Special.Plus4:
+                    ScriptableCard[] cardsToBuy = PlayerManager.instance.GetRandomCards(4);
+                    foreach(ScriptableCard card in cardsToBuy)
+                    {
+                        PlayerManager.instance.GetNextPlayer().BuyCard(card);
+                    }
+                    break;
+
+                case GameEnums.Special.ChangeBoard:
+
+                    break;
+            }
+        }
+
 
         PlayerManager.instance.ismoving = true;
 
