@@ -5,10 +5,13 @@ using UnityEngine;
 public class BoardManager : MonoBehaviour
 {
     public static BoardManager Instance { get; private set; }
+
     public List<GameObject> tileList;
 
     [SerializeField]
-    GameObject baseObject;
+    GameObject baseObject, corner, start, middle;
+    
+
 
     [SerializeField]
     Vector2 boardDimensions;
@@ -24,7 +27,7 @@ public class BoardManager : MonoBehaviour
             Instance = this;
         }
 
-        BoardCreator bc = new BoardCreator((int)boardDimensions.y, (int)boardDimensions.x, baseObject);
+        BoardCreator bc = new BoardCreator((int)boardDimensions.y, (int)boardDimensions.x, baseObject, corner, middle, start);
         bc.CreateBoard();
         tileList = bc.GetTileList();
         Debug.Log(tileList[5]);
