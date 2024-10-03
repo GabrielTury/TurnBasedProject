@@ -28,21 +28,27 @@ public class BoardCreator : MonoBehaviour
     {
         float spaceM = 1.5f;
         int addIndex = 0;
+        Vector3 LastTilePosition = Vector3.one;
         for (int i = 0; i < boardLength; i++)
         {
             GameObject go;
             if (i == 0)
             {
-                go = Instantiate(startTileObj, new Vector3(1, 1, 1.1f * i + 1), Quaternion.identity);
+                go = Instantiate(startTileObj, new Vector3(1, 1, LastTilePosition.z), Quaternion.identity);
+                LastTilePosition = go.transform.position;
+                go.GetComponent<Renderer>().material.color = Color.blue;
             }
             else if (i == (int)boardLength/2)
             {
-                go = Instantiate(middleTileObj, new Vector3(1, 1, spaceM * i + 1), Quaternion.identity);
+                go = Instantiate(middleTileObj, new Vector3(1, 1, 1.5f + LastTilePosition.z), Quaternion.identity);
+                LastTilePosition = go.transform.position;
             }
             else
             {
-                go = Instantiate(tileObj, new Vector3(1, 1, 1.1f*i + 1), Quaternion.identity);
+                go = Instantiate(tileObj, new Vector3(1, 1, 1.5f + LastTilePosition.z), Quaternion.identity);
+                LastTilePosition = go.transform.position;
             }
+
             go.transform.localScale *= 0.1f;
             go.transform.rotation = Quaternion.Euler(0, 90, 0);
             tiles.Add(go);
@@ -55,15 +61,19 @@ public class BoardCreator : MonoBehaviour
             GameObject go;
             if (i == 0)
             {
-                go = Instantiate(CornerTileObj, new Vector3(1.1f * i + 2.1f, 1, tiles[boardLength - 1].transform.position.z), Quaternion.identity);
+                go = Instantiate(CornerTileObj, new Vector3(LastTilePosition.x, 1, LastTilePosition.z + 1.5f), Quaternion.identity);
+                LastTilePosition = go.transform.position;
+                go.GetComponent<Renderer>().material.color = Color.blue;
             }
             else if (i == (int)boardWidth / 2)
             {
-                go = Instantiate(middleTileObj, new Vector3(1.1f * i + 2.1f, 1, tiles[boardLength - 1].transform.position.z), Quaternion.identity);
+                go = Instantiate(middleTileObj, new Vector3(LastTilePosition.x + 1.5f, 1, LastTilePosition.z), Quaternion.identity);
+                LastTilePosition = go.transform.position;
             }
             else
             {
-                go = Instantiate(tileObj, new Vector3(1.1f * i + 2.1f, 1, tiles[boardLength - 1].transform.position.z), Quaternion.identity);
+                go = Instantiate(tileObj, new Vector3(LastTilePosition.x + 1.5f, 1, LastTilePosition.z), Quaternion.identity);
+                LastTilePosition = go.transform.position;
             }
             go.transform.localScale *= 0.1f;
             addIndex++;
@@ -75,15 +85,19 @@ public class BoardCreator : MonoBehaviour
             GameObject go;
             if (i == 0)
             {
-                go = Instantiate(CornerTileObj, new Vector3(tiles[boardLength + boardWidth - 1].transform.position.x, 1, 1.1f * i - .1f), Quaternion.identity);
+                go = Instantiate(CornerTileObj, new Vector3(LastTilePosition.x + 1.5f, 1, LastTilePosition.z), Quaternion.identity);
+                LastTilePosition = go.transform.position;
+                go.GetComponent<Renderer>().material.color = Color.blue;
             }
             else if (i == (int)boardLength / 2)
             {
-                go = Instantiate(middleTileObj, new Vector3(tiles[boardLength + boardWidth - 1].transform.position.x, 1, 1.1f * i - .1f), Quaternion.identity);
+                go = Instantiate(middleTileObj, new Vector3(LastTilePosition.x, 1, LastTilePosition.z - 1.5f), Quaternion.identity);
+                LastTilePosition = go.transform.position;
             }
             else
             {
-                go = Instantiate(tileObj, new Vector3(tiles[boardLength + boardWidth - 1].transform.position.x, 1, 1.1f * i - .1f), Quaternion.identity);
+                go = Instantiate(tileObj, new Vector3(LastTilePosition.x, 1, LastTilePosition.z -1.5f), Quaternion.identity);
+                LastTilePosition = go.transform.position;
             }
 
             go.transform.rotation = Quaternion.Euler(0, 90, 0);
@@ -94,9 +108,25 @@ public class BoardCreator : MonoBehaviour
 
         for (int i = 0; i < boardWidth; i++)
         {
+            GameObject go;
+            if (i == 0)
+            {
+                go = Instantiate(CornerTileObj, new Vector3(LastTilePosition.x, 1, LastTilePosition.z - 1.5f), Quaternion.identity);
+                LastTilePosition = go.transform.position;
+                go.GetComponent<Renderer>().material.color = Color.blue;
+            }
+            else if (i == (int)boardLength / 2)
+            {
+                go = Instantiate(middleTileObj, new Vector3(LastTilePosition.x - 1.5f, 1, LastTilePosition.z), Quaternion.identity);
+                LastTilePosition = go.transform.position;
+            }
+            else
+            {
+                go = Instantiate(tileObj, new Vector3(LastTilePosition.x-1.5f, 1, LastTilePosition.z), Quaternion.identity);
+                LastTilePosition = go.transform.position;
+            }
+
             addIndex++;
-            GameObject go = Instantiate(tileObj, new Vector3(1.1f * i - 1, 1, tiles[boardLength + boardWidth].transform.position.z), Quaternion.identity);
-            tiles[(2 * boardLength) + boardWidth - 1].GetComponent<Renderer>().material.color = Color.blue;
             go.transform.localScale *= 0.1f;
             tiles.Add(go);
         }

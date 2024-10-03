@@ -605,7 +605,7 @@ MonoBehaviour:
   corner: {fileID: 919132149155446097, guid: 83df65bfe8343b146a713246663dfa05, type: 3}
   start: {fileID: 919132149155446097, guid: d15f7c8c24726af499c030e05764ece2, type: 3}
   middle: {fileID: 919132149155446097, guid: f0b754ca172d47e498892d61ecde1209, type: 3}
-  boardDimensions: {x: 13, y: 8}
+  boardDimensions: {x: 8, y: 8}
 --- !u!4 &2140590297
 Transform:
   m_ObjectHideFlags: 0
