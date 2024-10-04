@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1f4ba3b14a6e6f448fe97260fa298e8, type: 3}
-  m_Name: Example
+  m_Name: Green
   m_EditorClassIdentifier: 
   visualObject: {fileID: 0}
-  tileColor: 3
+  tileColor: 2
   special: 0

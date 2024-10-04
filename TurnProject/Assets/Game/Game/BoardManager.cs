@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BoardManager : MonoBehaviour
@@ -42,4 +43,25 @@ public class BoardManager : MonoBehaviour
     {
         
     }
+
+#if UNITY_EDITOR
+    [ContextMenu("CreateBoard")]
+    public void CreateDebugBoard()
+    {
+        if(tileList.Count > 0)
+        {
+            foreach(GameObject go in tileList)
+            {
+                DestroyImmediate(go);    
+                
+            }
+            tileList.Clear();
+            return;
+        }
+        BoardCreator bc = new BoardCreator((int)boardDimensions.y, (int)boardDimensions.x, baseObject, corner, middle, start);
+        bc.CreateBoard();
+        tileList = bc.GetTileList();
+
+    }
+#endif
 }

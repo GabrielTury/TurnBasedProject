@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour
     {
         for (int i = 0; i < playerAmount; i++)
         {
-            PlayerScript a = Instantiate(playerTempObject).GetComponent<PlayerScript>();
+            PlayerScript a = Instantiate(GameManager.instance.GetPlayer(i)).GetComponentInChildren<PlayerScript>();
             players.Add(a);
         }
 

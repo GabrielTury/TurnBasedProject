@@ -6,8 +6,8 @@ using UnityEngine;
 public class TileScriptableObject : ScriptableObject
 {
     [SerializeField]
-    private GameObject visualObject;
-    public GameObject GetVisual() => visualObject;
+    private Material visualObject;
+    public Material GetVisual() => visualObject;
 
     [SerializeField]
     private GameEnums.Colors tileColor;
