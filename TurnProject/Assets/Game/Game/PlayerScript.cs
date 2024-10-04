@@ -41,7 +41,8 @@ public class PlayerScript : MonoBehaviour
     }
     private void OnEndTurn()
     {
-        
+        if (cards.Count <= 0)
+            GameEvents.OnGameEnded(this);
     }
 
     public void OnLocalStartTurn()

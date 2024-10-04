@@ -8,6 +8,9 @@ public static class GameEvents
     public static event UnityAction StartGame;
     public static void OnGameStarted() => StartGame?.Invoke();
 
+    public static event UnityAction<PlayerScript> EndGame;
+    public static void OnGameEnded(PlayerScript winningPlayer) => EndGame?.Invoke(winningPlayer);
+
     public static event UnityAction<int> MovePlayer;
     public static void OnMovePlayer(int movementAmount) => MovePlayer?.Invoke(movementAmount);
 

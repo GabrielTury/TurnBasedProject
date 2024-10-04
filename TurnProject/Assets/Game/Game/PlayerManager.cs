@@ -25,12 +25,21 @@ public class PlayerManager : MonoBehaviour
     {
         GameEvents.TurnEnd += TurnChanger;
         GameEvents.StartGame += InitializeGame;
+        GameEvents.EndGame += GameEvents_EndGame;
+    }
+
+    private void GameEvents_EndGame(PlayerScript arg0)
+    {
+        //Disable all players's cards
+        //Show Victory Screen than return to Menu
+        throw new System.NotImplementedException();
     }
 
     private void OnDisable()
     {
         GameEvents.TurnEnd -= TurnChanger;
         GameEvents.StartGame -= InitializeGame;
+        GameEvents.EndGame -= GameEvents_EndGame;
     }
 
     private void Awake()

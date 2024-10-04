@@ -578,7 +578,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2140590297}
   - component: {fileID: 2140590296}
-  - component: {fileID: 2140590300}
   - component: {fileID: 2140590299}
   m_Layer: 0
   m_Name: Managers
@@ -638,19 +637,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd8c3db50a18d9b4fb7b145d7364f9cd, type: 2}
   playerTempObject: {fileID: 5733779358344140532, guid: e649d4d3d2de5f74db65b5a5abbb0618,
     type: 3}
---- !u!114 &2140590300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140590295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5397b754438c4241ba50b8969eb4e3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numOfPlayers: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

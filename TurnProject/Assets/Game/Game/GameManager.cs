@@ -6,17 +6,24 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    int numOfPlayers = 1;
+    int numOfPlayers = 2;
+
+    [SerializeField]
+    GameObject[] playerObjects;
+
+    int currentSelections;
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        InitializeGame();
+        playerObjects = new GameObject[numOfPlayers];
     }
 
     // Update is called once per frame
     void InitializeGame()
     {
+        currentSelections = 0;
+
         PlayerManager pm = FindObjectOfType<PlayerManager>();
         if (pm)
         {
@@ -28,5 +35,11 @@ public class GameManager : MonoBehaviour
         }
 
         GameEvents.OnGameStarted();
+    }
+
+    public void SetPlayerPawn(GameObject pawn)
+    {
+        playerObjects[currentSelections] = pawn;
+        currentSelections++;
     }
 }
