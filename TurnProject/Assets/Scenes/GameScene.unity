@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -227,7 +227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &100379119
 RectTransform:
   m_ObjectHideFlags: 0
@@ -444,7 +444,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Turno do jogador:'
+  m_text: 'Turno do jogador:
+
+    Jogador 1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -791,7 +793,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1057547139}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2140590299}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+        m_MethodName: StartPlayerTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1057547139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,7 +1264,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ismoving: 0
   cardList:
-  - {fileID: 11400000, guid: dd8c3db50a18d9b4fb7b145d7364f9cd, type: 2}
+  - {fileID: 11400000, guid: 58ca5fd36ba8cc846889eebe13767cbf, type: 2}
+  - {fileID: 11400000, guid: 0532dd32e2397b94e9ea9767bdd6a998, type: 2}
+  - {fileID: 11400000, guid: e5eec1a4ff28a9243b962ae4d0b6b8b9, type: 2}
+  - {fileID: 11400000, guid: bbe38bf08717e7849ae0d569d81bf3bd, type: 2}
+  - {fileID: 11400000, guid: e24d9b773ab672d42bd13a891d21c672, type: 2}
+  - {fileID: 11400000, guid: 4a63128ab36b59245ad6feef16d52722, type: 2}
+  - {fileID: 11400000, guid: 5b87c34c68528fb46abcf77f2463bed9, type: 2}
+  - {fileID: 11400000, guid: 71cedc6e36924514687d0146af58fbab, type: 2}
+  - {fileID: 11400000, guid: e8d4e93a90b339c468f5b827a3509a10, type: 2}
+  - {fileID: 11400000, guid: 5ec5a774cfc5bf24487c3b51b53773e1, type: 2}
+  - {fileID: 11400000, guid: 91d38ee52563db14e9c5cc4d383eef4a, type: 2}
+  - {fileID: 11400000, guid: 3526b2e5c8aa796478b292819df19830, type: 2}
+  - {fileID: 11400000, guid: 322f2f7e84acfaa4ca1eecddd833341d, type: 2}
+  - {fileID: 11400000, guid: 3ee65cda0fc3fd04caf2038a31703108, type: 2}
+  - {fileID: 11400000, guid: 50a266b96b3727c4b8a2c93e69b78d15, type: 2}
+  - {fileID: 11400000, guid: 4e9a0f3760d9fb44597593eaf3646ff1, type: 2}
+  - {fileID: 11400000, guid: 1497d1d1c5f005849942e053c8e70e37, type: 2}
+  - {fileID: 11400000, guid: 3ad1d980fec9a1342b697899cee65021, type: 2}
+  - {fileID: 11400000, guid: 420958f81c9625942835310bbcde9e00, type: 2}
+  - {fileID: 11400000, guid: 57aab9cc70ea67b408c1adfc7bff55e4, type: 2}
+  - {fileID: 11400000, guid: 90b9704ba673b6c47a029121d00bcbd1, type: 2}
+  - {fileID: 11400000, guid: c135b646ae28e16438637ebcb31172e2, type: 2}
+  - {fileID: 11400000, guid: b4a690ffb0d325a449ebce09ed816554, type: 2}
+  - {fileID: 11400000, guid: 3df2517e605c64047906a3efea1c25d0, type: 2}
+  turnChangeScreen: {fileID: 100379118}
   playerTempObject: {fileID: 5733779358344140532, guid: e649d4d3d2de5f74db65b5a5abbb0618,
     type: 3}
 --- !u!1001 &5804208281230086235

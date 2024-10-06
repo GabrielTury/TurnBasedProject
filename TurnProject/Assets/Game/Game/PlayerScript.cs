@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -103,6 +104,7 @@ public class PlayerScript : MonoBehaviour
             int rand = Random.Range(0, possibleCards.Count);
 
             c.GetComponent<CardBehaviour>().CreateCardBehaviour(possibleCards[rand]);
+            c.GetComponent<Image>().sprite = possibleCards[rand].GetSprite();
 
             cards.Add(c);
 

@@ -15,4 +15,4 @@ MonoBehaviour:
   number: 6
   color: 2
   specialType: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 9337f5b199d88b64bbba1c4c8a1ee391, type: 3}

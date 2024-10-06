@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,9 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField, Tooltip("List with all available cards on the game")]
     private List<ScriptableCard> cardList;
+
+    [SerializeField]
+    private GameObject turnChangeScreen;
 
     public List<PlayerScript> players { get; private set; }
 
@@ -91,6 +95,13 @@ public class PlayerManager : MonoBehaviour
             turnPlayer++;                        
         }
         //Change Turn Animation
+        turnChangeScreen.SetActive(true);
+        turnChangeScreen.GetComponentInChildren<TMP_Text>().text = string.Format("Turno do jogador:\n Jogador {0}", turnPlayer);
+                
+    }
+
+    public void StartPlayerTurn()
+    {
         players[turnPlayer].OnLocalStartTurn();
     }
     public void SetPlayerAmount(int i)
