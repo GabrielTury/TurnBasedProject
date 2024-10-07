@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f4ba3b14a6e6f448fe97260fa298e8, type: 3}
   m_Name: Start
   m_EditorClassIdentifier: 
-  visualObject: {fileID: 0}
+  visualObject: {fileID: 2100000, guid: a6cd66a08f8f16c448d10d627f9e43c7, type: 2}
   tileColor: 0
   special: 2

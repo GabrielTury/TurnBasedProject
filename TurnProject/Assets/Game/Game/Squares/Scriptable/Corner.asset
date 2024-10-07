@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f4ba3b14a6e6f448fe97260fa298e8, type: 3}
   m_Name: Corner
   m_EditorClassIdentifier: 
-  visualObject: {fileID: 0}
+  visualObject: {fileID: 2100000, guid: ef2e7b9c0142a5745a2125cf3f327588, type: 2}
   tileColor: 0
   special: 1
