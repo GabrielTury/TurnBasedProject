@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class BoardCreator : MonoBehaviour
@@ -36,7 +37,8 @@ public class BoardCreator : MonoBehaviour
             {
                 go = Instantiate(startTileObj, new Vector3(1, 1, LastTilePosition.z), Quaternion.identity);
                 LastTilePosition = go.transform.position;
-                go.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
+                go.transform.rotation = Quaternion.Euler(0, -90, 0);
+                //go.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
             }
             else if (i == 1)
             {
@@ -60,7 +62,9 @@ public class BoardCreator : MonoBehaviour
             }
 
             go.transform.localScale *= 0.1f;
-            go.transform.rotation = Quaternion.Euler(0, 90, 0);
+            if(i != 0)
+                go.transform.rotation = Quaternion.Euler(0, 90, 0);
+
             tiles.Add(go);
             addIndex++;
         }
@@ -73,7 +77,7 @@ public class BoardCreator : MonoBehaviour
             {
                 go = Instantiate(CornerTileObj, new Vector3(LastTilePosition.x, 1, LastTilePosition.z + 1.5f), Quaternion.identity);
                 LastTilePosition = go.transform.position;
-                go.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
+                //go.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
             }
             else if (i==1)
             {
@@ -87,7 +91,7 @@ public class BoardCreator : MonoBehaviour
             }
             else if (i == 1+((int)boardWidth / 2))
             {
-                go = Instantiate(middleTileObj, new Vector3(LastTilePosition.x + 1.65f, 1, LastTilePosition.z), Quaternion.identity);
+                go = Instantiate(tileObj, new Vector3(LastTilePosition.x + 1.65f, 1, LastTilePosition.z), Quaternion.identity);
                 LastTilePosition = go.transform.position;
             }
             else
@@ -107,7 +111,7 @@ public class BoardCreator : MonoBehaviour
             {
                 go = Instantiate(CornerTileObj, new Vector3(LastTilePosition.x + 1.5f, 1, LastTilePosition.z), Quaternion.identity);
                 LastTilePosition = go.transform.position;
-                go.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
+               // go.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
             }
             else if (i == 1)
             {
@@ -121,7 +125,7 @@ public class BoardCreator : MonoBehaviour
             }
             else if (i == 1 + ((int)boardLength / 2))
             {
-                go = Instantiate(middleTileObj, new Vector3(LastTilePosition.x, 1, LastTilePosition.z - 1.65f), Quaternion.identity);
+                go = Instantiate(tileObj, new Vector3(LastTilePosition.x, 1, LastTilePosition.z - 1.65f), Quaternion.identity);
                 LastTilePosition = go.transform.position;
             }
             else
@@ -143,7 +147,7 @@ public class BoardCreator : MonoBehaviour
             {
                 go = Instantiate(CornerTileObj, new Vector3(LastTilePosition.x, 1, LastTilePosition.z - 1.5f), Quaternion.identity);
                 LastTilePosition = go.transform.position;
-                go.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
+                //go.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
             }
             else if (i == 1)
             {
@@ -157,7 +161,7 @@ public class BoardCreator : MonoBehaviour
             }
             else if (i == 1+((int)boardWidth / 2))
             {
-                go = Instantiate(middleTileObj, new Vector3(LastTilePosition.x - 1.65f, 1, LastTilePosition.z), Quaternion.identity);
+                go = Instantiate(tileObj, new Vector3(LastTilePosition.x - 1.65f, 1, LastTilePosition.z), Quaternion.identity);
                 LastTilePosition = go.transform.position;
             }
             else

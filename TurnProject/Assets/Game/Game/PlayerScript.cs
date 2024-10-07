@@ -42,6 +42,8 @@ public class PlayerScript : MonoBehaviour
     }
     private void OnEndTurn()
     {
+        currentTile = BoardManager.Instance.GetNearestTile(gameObject.transform.position);
+
         if (cards.Count <= 0)
             GameEvents.OnGameEnded(this);
     }
@@ -88,7 +90,7 @@ public class PlayerScript : MonoBehaviour
     }
 
     public void UseCard(GameObject usedCard)
-    {
+    {        
         cards.Remove(usedCard);
         Destroy(usedCard);
 

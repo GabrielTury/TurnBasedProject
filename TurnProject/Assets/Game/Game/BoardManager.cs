@@ -11,6 +11,9 @@ public class BoardManager : MonoBehaviour
 
     [SerializeField]
     GameObject baseObject, corner, start, middle;
+
+    [SerializeField]
+    TileScriptableObject[] tileInfo;
     
 
 
@@ -31,7 +34,33 @@ public class BoardManager : MonoBehaviour
         BoardCreator bc = new BoardCreator((int)boardDimensions.y, (int)boardDimensions.x, baseObject, corner, middle, start);
         bc.CreateBoard();
         tileList = bc.GetTileList();
-        Debug.Log(tileList[5]);
+        RandomizeBoard();
+    }
+
+    public void RandomizeBoard()
+    {
+        foreach (GameObject tile in tileList)
+        {
+            if(tile.GetComponent<Tile>() != null)
+            {
+                int rand = Random.Range(0, tileInfo.Length);
+                tile.GetComponent<Tile>().SetTileInfo(tileInfo[rand]);
+            }
+        }
+    }
+
+    public Tile GetNearestTile(Vector3 pos)
+    {
+        float dist = 30f;
+        Tile ret = null;
+        foreach(GameObject tile in tileList)
+        {
+            if (Vector3.Distance(tile.transform.position, pos) < dist)
+            {
+                ret = tile.GetComponent<Tile>();
+            }
+        }
+        return ret;
     }
     void Start()
     {
@@ -61,6 +90,7 @@ public class BoardManager : MonoBehaviour
         BoardCreator bc = new BoardCreator((int)boardDimensions.y, (int)boardDimensions.x, baseObject, corner, middle, start);
         bc.CreateBoard();
         tileList = bc.GetTileList();
+        RandomizeBoard();
 
     }
 #endif

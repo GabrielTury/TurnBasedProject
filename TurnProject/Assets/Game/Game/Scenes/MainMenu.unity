@@ -864,7 +864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb0e079cf6454d40991a3f8896b52d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
   mainMenu: {fileID: 553374093}
   pawnSelection: {fileID: 1798026116}
 --- !u!4 &548491795
