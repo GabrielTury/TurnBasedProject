@@ -29,6 +29,12 @@ public class CardBehaviour : MonoBehaviour
         if (PlayerManager.instance.ismoving)
             return;
 
+        PlayerScript player = PlayerManager.instance.GetCurrentPlayer();
+        if (player.currentTile.color != color)
+        {
+            if (player.currentTile.color != GameEnums.Colors.None)            
+                return;
+        }
 
         if(special == 0)
             GameEvents.OnMovePlayer(number);
@@ -40,12 +46,14 @@ public class CardBehaviour : MonoBehaviour
                     ScriptableCard[] cardsToBuy = PlayerManager.instance.GetRandomCards(4);
                     foreach(ScriptableCard card in cardsToBuy)
                     {
-                        PlayerManager.instance.GetNextPlayer().BuyCard(card);
+                        PlayerManager.instance.GetNextPlayer().BuyCard(card);                        
                     }
+                    GameEvents.OnMovePlayer(4);
                     break;
 
                 case GameEnums.Special.ChangeBoard:
-
+                    BoardManager.Instance.RandomizeBoard();
+                    GameEvents.OnMovePlayer(3);
                     break;
             }
         }

@@ -58,6 +58,7 @@ public class BoardManager : MonoBehaviour
             if (Vector3.Distance(tile.transform.position, pos) < dist)
             {
                 ret = tile.GetComponent<Tile>();
+                dist = Vector3.Distance(tile.transform.position, pos);
             }
         }
         return ret;

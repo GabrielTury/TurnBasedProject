@@ -23,6 +23,9 @@ public class PlayerScript : MonoBehaviour
     private void Awake()
     {
         cards = new List<GameObject>();
+
+        if (BoardManager.Instance != null )
+            currentTile = BoardManager.Instance.tileList[0].GetComponent<Tile>();
     }
     private void OnEnable()
     {
@@ -43,9 +46,6 @@ public class PlayerScript : MonoBehaviour
     private void OnEndTurn()
     {
         currentTile = BoardManager.Instance.GetNearestTile(gameObject.transform.position);
-
-        if (cards.Count <= 0)
-            GameEvents.OnGameEnded(this);
     }
 
     public void OnLocalStartTurn()
@@ -53,16 +53,55 @@ public class PlayerScript : MonoBehaviour
         GameEvents.MovePlayer += Movement;
         GameEvents.CardBuy += BuyCard;
         GameEvents.UseCard += UseCard;
+        
+        switch(currentTile.special)
+        {
+            case GameEnums.TileSpecial.None:
+                break;
+
+            case GameEnums.TileSpecial.Start:
+                UseCard(cards[0]);
+                break;
+
+            case GameEnums.TileSpecial.Plus2:
+                ScriptableCard[] randoms = PlayerManager.instance.GetRandomCards(2);
+                foreach(var rand in randoms)
+                {
+                    BuyCard(rand);
+                }                
+                break;
+
+            case GameEnums.TileSpecial.DrawSpecialCard:
+                ScriptableCard[] specials = PlayerManager.instance.GetRandomSpecialCards(1);
+                foreach (var rand in specials)
+                {
+                    BuyCard(rand);
+                }
+                break;
+        }
 
         float offset = 0;
-        foreach(var card in cards)
+        float playableCards = 0;
+        foreach (var card in cards)
         {
             RectTransform tr = card.GetComponent<RectTransform>();
-            tr.position = new Vector3(200, 0, 0);
+            tr.position = new Vector3(100, 0, 0);
 
             card.SetActive(true);
             tr.position += new Vector3(offset, 0, 0);
-            offset += 90;
+            offset += 70;
+
+            if (card.GetComponent<CardBehaviour>().color == currentTile.color || currentTile.color == GameEnums.Colors.None)
+            {
+                playableCards++;
+            }
+        }
+
+        if (playableCards == 0)
+        {
+
+            BuyCard(PlayerManager.instance.GetRandomCards(1)[0]);
+            StartCoroutine(TimerForTurnEnd());        
         }
     }
     public void OnLocalEndTurn()
@@ -85,8 +124,10 @@ public class PlayerScript : MonoBehaviour
         GameObject g = Instantiate(cardPrefab, canvasParent);
 
         g.GetComponent<CardBehaviour>().CreateCardBehaviour(card);
+        g.GetComponent<Image>().sprite = card.GetSprite();
 
         cards.Add(g);
+        g.SetActive(false);
     }
 
     public void UseCard(GameObject usedCard)
@@ -94,6 +135,8 @@ public class PlayerScript : MonoBehaviour
         cards.Remove(usedCard);
         Destroy(usedCard);
 
+        if (cards.Count <= 0)
+            GameEvents.OnGameEnded(this);
     }
 
     public void SetInitialCards(int cardAmount, List<ScriptableCard> possibleCards)
@@ -119,6 +162,12 @@ public class PlayerScript : MonoBehaviour
         currentTile = tile;
     }
 
+    private IEnumerator TimerForTurnEnd()
+    {
+        yield return new WaitForSeconds(5);
+        OnLocalEndTurn();
+        GameEvents.OnTurnEnded();
+    }
     #region Movement
     void Movement(int movementAmount)
     {
@@ -129,6 +178,8 @@ public class PlayerScript : MonoBehaviour
         if(currentTileIndex > boardManagerInstance.tileList.Count)
         {
             currentTileIndex -= boardManagerInstance.tileList.Count;
+            UseCard(cards[0]);
+            Debug.Log("Passed Start");
         }
         StartCoroutine(MoveToTile());
     }
@@ -144,6 +195,14 @@ public class PlayerScript : MonoBehaviour
 
         OnLocalEndTurn();
         GameEvents.OnTurnEnded();
+    }
+
+    public void DisableCards()
+    {
+        foreach(var c  in cards)
+        {
+            c.SetActive(false);
+        }
     }
     #endregion
 }

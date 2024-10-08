@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -18,8 +19,17 @@ public class PlayerManager : MonoBehaviour
     [SerializeField, Tooltip("List with all available cards on the game")]
     private List<ScriptableCard> cardList;
 
+    [SerializeField, Tooltip("List with all special cards")]
+    private List<ScriptableCard> specialCards;
+
     [SerializeField]
     private GameObject turnChangeScreen;
+
+    [SerializeField]
+    private GameObject winScreen;
+
+    [SerializeField]
+    private TMP_Text winTxt;
 
     public List<PlayerScript> players { get; private set; }
 
@@ -35,8 +45,13 @@ public class PlayerManager : MonoBehaviour
     private void GameEvents_EndGame(PlayerScript arg0)
     {
         //Disable all players's cards
+        foreach(var p in players)
+        {
+            p.DisableCards();
+        }
         //Show Victory Screen than return to Menu
-        throw new System.NotImplementedException();
+        winScreen.SetActive(true);
+        winTxt.text = string.Format("Jogador {0} Ganhou!", turnPlayer+1);
     }
 
     private void OnDisable()
@@ -96,13 +111,14 @@ public class PlayerManager : MonoBehaviour
         }
         //Change Turn Animation
         turnChangeScreen.SetActive(true);
-        turnChangeScreen.GetComponentInChildren<TMP_Text>().text = string.Format("Turno do jogador:\n Jogador {0}", turnPlayer);
+        turnChangeScreen.GetComponentInChildren<TMP_Text>().text = string.Format("Turno do jogador:\n Jogador {0}", turnPlayer + 1);
                 
     }
 
     public void StartPlayerTurn()
     {
         players[turnPlayer].OnLocalStartTurn();
+        turnChangeScreen.SetActive(false);
     }
     public void SetPlayerAmount(int i)
     {
@@ -118,10 +134,15 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            playerIndex = playerAmount + 1;
+            playerIndex = turnPlayer + 1;
         }
 
         return players[playerIndex];
+    }
+
+    public PlayerScript GetCurrentPlayer()
+    {
+        return players[turnPlayer];
     }
 
     public ScriptableCard[] GetRandomCards(int amount)
@@ -135,5 +156,22 @@ public class PlayerManager : MonoBehaviour
         return returnCards;
     }
 
+    public ScriptableCard[] GetRandomSpecialCards(int amount)
+    {
+        ScriptableCard[] returnCards = new ScriptableCard[amount];
+        for (int i = 0; i < amount; i++)
+        {
+            returnCards[i] = specialCards[Random.Range(0, specialCards.Count)];
+        }
+
+        return returnCards;
+    }
+
+    #region preguica
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    #endregion
 
 }
