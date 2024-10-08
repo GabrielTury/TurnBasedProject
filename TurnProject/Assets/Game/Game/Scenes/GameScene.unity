@@ -2122,7 +2122,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e24d9b773ab672d42bd13a891d21c672, type: 2}
   - {fileID: 11400000, guid: 4a63128ab36b59245ad6feef16d52722, type: 2}
   - {fileID: 11400000, guid: 5b87c34c68528fb46abcf77f2463bed9, type: 2}
-  - {fileID: 11400000, guid: 71cedc6e36924514687d0146af58fbab, type: 2}
+  - {fileID: 11400000, guid: 5b87c34c68528fb46abcf77f2463bed9, type: 2}
   - {fileID: 11400000, guid: e8d4e93a90b339c468f5b827a3509a10, type: 2}
   - {fileID: 11400000, guid: 5ec5a774cfc5bf24487c3b51b53773e1, type: 2}
   - {fileID: 11400000, guid: 91d38ee52563db14e9c5cc4d383eef4a, type: 2}
@@ -2130,7 +2130,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 322f2f7e84acfaa4ca1eecddd833341d, type: 2}
   - {fileID: 11400000, guid: 3ee65cda0fc3fd04caf2038a31703108, type: 2}
   - {fileID: 11400000, guid: 50a266b96b3727c4b8a2c93e69b78d15, type: 2}
-  - {fileID: 11400000, guid: 4e9a0f3760d9fb44597593eaf3646ff1, type: 2}
+  - {fileID: 11400000, guid: 50a266b96b3727c4b8a2c93e69b78d15, type: 2}
   - {fileID: 11400000, guid: 1497d1d1c5f005849942e053c8e70e37, type: 2}
   - {fileID: 11400000, guid: 3ad1d980fec9a1342b697899cee65021, type: 2}
   - {fileID: 11400000, guid: 420958f81c9625942835310bbcde9e00, type: 2}
@@ -2138,13 +2138,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 90b9704ba673b6c47a029121d00bcbd1, type: 2}
   - {fileID: 11400000, guid: c135b646ae28e16438637ebcb31172e2, type: 2}
   - {fileID: 11400000, guid: b4a690ffb0d325a449ebce09ed816554, type: 2}
-  - {fileID: 11400000, guid: 3df2517e605c64047906a3efea1c25d0, type: 2}
-  specialCards:
-  - {fileID: 11400000, guid: 5b87c34c68528fb46abcf77f2463bed9, type: 2}
-  - {fileID: 11400000, guid: 71cedc6e36924514687d0146af58fbab, type: 2}
-  - {fileID: 11400000, guid: 50a266b96b3727c4b8a2c93e69b78d15, type: 2}
-  - {fileID: 11400000, guid: 4e9a0f3760d9fb44597593eaf3646ff1, type: 2}
   - {fileID: 11400000, guid: b4a690ffb0d325a449ebce09ed816554, type: 2}
+  specialCards:
+  - {fileID: 11400000, guid: 71cedc6e36924514687d0146af58fbab, type: 2}
+  - {fileID: 11400000, guid: 71cedc6e36924514687d0146af58fbab, type: 2}
+  - {fileID: 11400000, guid: 4e9a0f3760d9fb44597593eaf3646ff1, type: 2}
+  - {fileID: 11400000, guid: 4e9a0f3760d9fb44597593eaf3646ff1, type: 2}
+  - {fileID: 11400000, guid: 3df2517e605c64047906a3efea1c25d0, type: 2}
   - {fileID: 11400000, guid: 3df2517e605c64047906a3efea1c25d0, type: 2}
   turnChangeScreen: {fileID: 100379118}
   winScreen: {fileID: 1321895707}
