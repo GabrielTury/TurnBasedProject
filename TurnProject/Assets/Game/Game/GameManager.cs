@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(1);
         }
 
-        text.text = string.Format("Selecione um peão \n Jogador Nº: {0}", currentSelections + 1);
+        text.text = string.Format(" \n Jogador Nº: {0}", currentSelections + 1);
     }
 
     public GameObject GetPlayer(int index)
