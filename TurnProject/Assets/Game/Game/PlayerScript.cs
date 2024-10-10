@@ -175,7 +175,7 @@ public class PlayerScript : MonoBehaviour
 
         currentTileIndex += movementAmount;
         Debug.Log(boardManagerInstance);
-        if(currentTileIndex > boardManagerInstance.tileList.Count)
+        if(currentTileIndex >= boardManagerInstance.tileList.Count)
         {
             currentTileIndex -= boardManagerInstance.tileList.Count;
             UseCard(cards[0]);

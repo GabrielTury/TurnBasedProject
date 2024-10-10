@@ -78,7 +78,7 @@ public class PlayerManager : MonoBehaviour
     {
         for (int i = 0; i < playerAmount; i++)
         {
-            PlayerScript a = Instantiate(GameManager.instance.GetPlayer(i)).GetComponentInChildren<PlayerScript>();
+            PlayerScript a = Instantiate(GameManager.instance.GetPlayer(i), new Vector3(0.5f, 1,1), Quaternion.identity).GetComponentInChildren<PlayerScript>();
             players.Add(a);
         }
 
