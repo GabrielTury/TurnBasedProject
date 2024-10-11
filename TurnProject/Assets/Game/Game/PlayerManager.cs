@@ -31,9 +31,18 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private TMP_Text winTxt;
 
+    private Camera cam;
+
+    private bool bEnded = false;
+
     public List<PlayerScript> players { get; private set; }
 
     public GameObject playerTempObject;
+
+    private void Start()
+    {
+        cam = Camera.main;
+    }
 
     private void OnEnable()
     {
@@ -52,6 +61,7 @@ public class PlayerManager : MonoBehaviour
         //Show Victory Screen than return to Menu
         winScreen.SetActive(true);
         winTxt.text = string.Format("Jogador {0} Ganhou!", turnPlayer+1);
+        bEnded = true;
     }
 
     private void OnDisable()
@@ -101,6 +111,10 @@ public class PlayerManager : MonoBehaviour
 
     private void TurnChanger()
     {
+
+        if (bEnded)
+            return;
+
         if(turnPlayer + 1 >= playerAmount)
         {
             turnPlayer = 0;
@@ -109,10 +123,31 @@ public class PlayerManager : MonoBehaviour
         {
             turnPlayer++;                        
         }
-        //Change Turn Animation
+        StartCoroutine(MoveCamera());                                      
+    }
+
+    private IEnumerator MoveCamera()
+    {
+        while (true)
+        {
+            Vector3 targetPosition = players[turnPlayer].transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(targetPosition - cam.transform.position);
+
+            // Check if the camera is already looking at the player
+            if (Quaternion.Angle(cam.transform.rotation, targetRotation) > 0.1f)
+            {
+                cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, targetRotation, Time.deltaTime * 2);
+            }
+            else
+            {
+                break;
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
         turnChangeScreen.SetActive(true);
         turnChangeScreen.GetComponentInChildren<TMP_Text>().text = string.Format("Turno do jogador:\n Jogador {0}", turnPlayer + 1);
-                
     }
 
     public void StartPlayerTurn()

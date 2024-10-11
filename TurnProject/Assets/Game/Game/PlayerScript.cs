@@ -188,6 +188,8 @@ public class PlayerScript : MonoBehaviour
     {
         while(Vector3.Distance(transform.position, boardManagerInstance.tileList[currentTileIndex].transform.position) > .01)
         {
+            Camera.main.transform.LookAt(transform.position);
+
             transform.position = Vector3.MoveTowards(transform.position, boardManagerInstance.tileList[currentTileIndex].transform.position, Time.deltaTime * moveSpeed);
 
             yield return new WaitForEndOfFrame();
